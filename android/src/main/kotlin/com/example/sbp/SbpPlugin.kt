@@ -43,13 +43,18 @@ class SbpPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             "getInstalledBanks" -> {
                 val pm: PackageManager = context.applicationContext.packageManager
                 val installedApplications = pm.getInstalledApplications(PackageManager.GET_META_DATA)
-                val listApplicationInfo =
-                    call.argument<List<Map<String, String>>>("listApplicationInfo")!!
+
+                val applicationPackageNames =
+                    call.argument<List<String>>("application_package_names")!!
+
                 val installedBanks = mutableListOf<Map<String, Any>>()
+
                 for (installedApplication in installedApplications) {
-                    for (applicationInfo in listApplicationInfo) {
-                        if (installedApplication.packageName == applicationInfo["package_name"]) {
+                    for (applicationPackageName in applicationPackageNames) {
+                        if (installedApplication.packageName == applicationPackageName) {
                             val icon = installedApplication.loadIcon(pm)
+                            val name = pm.getApplicationLabel(installedApplication)
+
                             val bitmap: Bitmap = if (icon is BitmapDrawable) {
                                 icon.bitmap
                             } else {
@@ -63,13 +68,14 @@ class SbpPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                                 icon.draw(canvas)
                                 bitmap
                             }
+
                             val stream = ByteArrayOutputStream()
                             bitmap.compress(Bitmap.CompressFormat.PNG,100,stream)
                             val byteArray = stream.toByteArray()
                             installedBanks.add(
                                 mapOf(
                                     "package_name" to installedApplication.packageName,
-                                    "name" to installedApplication.name,
+                                    "name" to name.toString(),
                                     "bitmap" to byteArray
                                 )
                             )
@@ -81,6 +87,8 @@ class SbpPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             "openBank" -> {
                 val packageName = call.argument<String>("package_name")!!
                 val url = call.argument<String>("url")!!
+                println(packageName)
+                println(url)
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 intent.setPackage(packageName)

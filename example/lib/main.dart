@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sbp/application_info_model.dart';
 import 'package:sbp/sbp.dart';
 
 void main() {
@@ -24,7 +25,7 @@ class _MyAppState extends State<MyApp> {
     initPlatformState();
   }
 
-  List<ApplicationInfo> platformVersion = [];
+  List<ApplicationInfoModel> platformVersion = [];
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
@@ -32,7 +33,6 @@ class _MyAppState extends State<MyApp> {
     // We also handle the message potentially returning null.
     try {
       platformVersion = await Sbp.getInstalledBanks;
-      print(platformVersion);
     } on PlatformException {
       platformVersion = [];
     }
@@ -54,30 +54,33 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Column(
-            children: platformVersion
-                .map(
-                  (e) => Column(
-                    children: [
-                      Image.memory(e.bitmap),
-                      GestureDetector(
-                        onTap: () => openBank(e),
-                        child: SizedBox(
-                          height: 200,
-                          child: Center(
-                            child: Text('Running on: $_platformVersion\n'),
+        body: SingleChildScrollView(
+          child: Column(
+              children: platformVersion
+                  .map(
+                    (e) => Column(
+                      children: [
+                        Image.memory(e.bitmap!),
+                        GestureDetector(
+                          onTap: () => openBank(e.packageName),
+                          child: SizedBox(
+                            height: 200,
+                            child: Center(
+                              child: Text('Running on: ${e.name}\n'),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                )
-                .toList()),
+                      ],
+                    ),
+                  )
+                  .toList()),
+        ),
       ),
     );
   }
 
-  Future<void> openBank(ApplicationInfo info) async {
-    await Sbp.openBank(info);
+  Future<void> openBank(String packageName) async {
+    print(packageName);
+    await Sbp.openBank(packageName);
   }
 }
