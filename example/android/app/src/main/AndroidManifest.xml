@@ -1,5 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sbp_example">
+    <uses-permission android:name="android.permission.INTERNET" /><!--it is required for loading bank app packages from nspk.ru-->
+    <queries>
+        <intent>
+            <data android:scheme="https" android:host="qr.nspk.ru"/>
+            <action android:name="android.intent.action.VIEW" />
+        </intent>
+    </queries>
    <application
         android:label="sbp_example"
         android:name="${applicationName}"
@@ -23,6 +30,12 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <data android:scheme="scheme.com.example.sbp_example"/>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.

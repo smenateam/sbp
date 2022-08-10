@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sbp/sbp.dart';
 
@@ -24,16 +24,17 @@ class _MyAppState extends State<MyApp> {
     initPlatformState();
   }
 
+  List<ApplicationInfo> platformVersion = [];
+
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    String platformVersion;
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      platformVersion =
-          await Sbp.getInstalledBanks ?? 'Unknown platform version';
+      platformVersion = await Sbp.getInstalledBanks;
+      print(platformVersion);
     } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
+      platformVersion = [];
     }
 
     // If the widget was removed from the tree while the asynchronous platform
@@ -42,7 +43,7 @@ class _MyAppState extends State<MyApp> {
     if (!mounted) return;
 
     setState(() {
-      _platformVersion = platformVersion;
+      _platformVersion = platformVersion.toString();
     });
   }
 
@@ -53,13 +54,30 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: GestureDetector(
-          onTap: ()=>initPlatformState(),
-          child: Center(
-            child: Text('Running on: $_platformVersion\n'),
-          ),
-        ),
+        body: Column(
+            children: platformVersion
+                .map(
+                  (e) => Column(
+                    children: [
+                      Image.memory(e.bitmap),
+                      GestureDetector(
+                        onTap: () => openBank(e),
+                        child: SizedBox(
+                          height: 200,
+                          child: Center(
+                            child: Text('Running on: $_platformVersion\n'),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+                .toList()),
       ),
     );
+  }
+
+  Future<void> openBank(ApplicationInfo info) async {
+    await Sbp.openBank(info);
   }
 }
