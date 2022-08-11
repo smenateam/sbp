@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sbp/application_info_model.dart';
+import 'package:sbp/c2bmembers_model.dart';
 import 'package:sbp/sbp.dart';
 
 void main() {
@@ -25,14 +25,15 @@ class _MyAppState extends State<MyApp> {
     initPlatformState();
   }
 
-  List<ApplicationInfoModel> platformVersion = [];
+  List<C2bmemberModel> platformVersion = [];
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      platformVersion = await Sbp.getInstalledBanks;
+      platformVersion = await Sbp.getIOSInstalledBanks(
+          'bank100000000007', 'https://qr.nspk.ru/AD10006K1GQ7788G9ACAAM970SGCOLNM?type=02&&sum=1100&cur=RUB&crc=CD70');
     } on PlatformException {
       platformVersion = [];
     }
@@ -60,13 +61,13 @@ class _MyAppState extends State<MyApp> {
                   .map(
                     (e) => Column(
                       children: [
-                        Image.memory(e.bitmap!),
+                        //Image.network(e.logoURL),
                         GestureDetector(
-                          onTap: () => openBank(e.packageName),
+                          onTap: () => open(e.schema),
                           child: SizedBox(
                             height: 200,
                             child: Center(
-                              child: Text('Running on: ${e.name}\n'),
+                              child: Text('Running on: ${e.packageName}\n'),
                             ),
                           ),
                         ),
@@ -79,8 +80,7 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  Future<void> openBank(String packageName) async {
-    print(packageName);
-    await Sbp.openBank(packageName);
+  Future<void> open(String packageName) async {
+    await Sbp.openIOS(packageName);
   }
 }
