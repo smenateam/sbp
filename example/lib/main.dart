@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sbp/application_info_model.dart';
 import 'package:sbp/c2bmembers_model.dart';
 import 'package:sbp/sbp.dart';
 
@@ -17,7 +19,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
 
   @override
   void initState() {
@@ -25,27 +26,18 @@ class _MyAppState extends State<MyApp> {
     initPlatformState();
   }
 
-  List<C2bmemberModel> platformVersion = [];
+  List<ApplicationInfoModel> applicationInfoModel = [];
+  List<C2bmemberModel> c2bmemberModel = [];
 
-  // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // We also handle the message potentially returning null.
     try {
-      platformVersion = await Sbp.getIOSInstalledBanks(
-          'bank100000000007', 'https://qr.nspk.ru/AD10006K1GQ7788G9ACAAM970SGCOLNM?type=02&&sum=1100&cur=RUB&crc=CD70');
-    } on PlatformException {
-      platformVersion = [];
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion.toString();
-    });
+      if (Platform.isAndroid) {
+        applicationInfoModel = await Sbp.getAndroidInstalledBanks;
+      }
+      if (Platform.isIOS) {
+        c2bmemberModel = await Sbp.getIOSInstalledBanks;
+      }
+    } on PlatformException {}
   }
 
   @override
@@ -57,17 +49,17 @@ class _MyAppState extends State<MyApp> {
         ),
         body: SingleChildScrollView(
           child: Column(
-              children: platformVersion
+              children: applicationInfoModel
                   .map(
-                    (e) => Column(
+                    (applicationInfo) => Column(
                       children: [
                         //Image.network(e.logoURL),
                         GestureDetector(
-                          onTap: () => open(e.schema),
+                          onTap: () => openBank(applicationInfo.packageName),
                           child: SizedBox(
                             height: 200,
                             child: Center(
-                              child: Text('Running on: ${e.packageName}\n'),
+                              child: Text('Running on: ${applicationInfo.name}\n'),
                             ),
                           ),
                         ),
@@ -80,7 +72,12 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  Future<void> open(String packageName) async {
-    await Sbp.openIOS(packageName);
+  Future<void> openBank(String information) async {
+    if (Platform.isAndroid) {
+      await Sbp.openAndroidBank(information);
+    }
+    if (Platform.isIOS) {
+      await Sbp.openBankIOS(information);
+    }
   }
 }

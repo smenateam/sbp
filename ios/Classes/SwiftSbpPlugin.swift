@@ -16,7 +16,7 @@ public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         getInstalledBanks(schemaApplications,result:result)
     } else if call.method == "openBank" {
         let arguments = (call.arguments as? Dictionary<String,String>)!
-        let url = schemaLink(arguments["schema"]!  ,arguments["link"]!)
+        let url = schemaLink(arguments["schema"]!  ,arguments["url"]!)
         
         open(url, result:result)
     }

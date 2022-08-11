@@ -11,9 +11,12 @@ import 'c2bmembers_data.dart';
 class Sbp {
   static const MethodChannel _channel = MethodChannel('sbp');
 
-  static Future<List<ApplicationInfoModel>> get getInstalledBanks async {
+  /// Получение списка банков, установленных на устройстве пользователя: Android
+  static Future<List<ApplicationInfoModel>> get getAndroidInstalledBanks async {
     final List<String> packageNamesApplications =
         assetLinks.map((assetLink) => AssetLinkModel.fromJson(assetLink).assetLinkTargetModel.packageName).toList();
+    /// отдаем список поддерживаемых банков(SBP) из https://qr.nspk.ru/.well-known/assetlinks.json (application_package_names) и сравниваем с установленными
+    /// возвращаем список установленных банков
     final installedBanks = (await _channel
             .invokeMethod('getInstalledBanks', {'application_package_names': packageNamesApplications}) as List)
         .map(
@@ -23,16 +26,21 @@ class Sbp {
     return installedBanks;
   }
 
-  static Future<List<C2bmemberModel>> getIOSInstalledBanks(String schema, String link) async {
+  /// Получение списка банков, установленных на устройстве пользователя: IOS
+  static Future<List<C2bmemberModel>> get getIOSInstalledBanks async {
+    /// Парсим список установленных банков с ссылки https://qr.nspk.ru/proxyapp/c2bmembers.json
     final c2bmembersModel = C2bmembersModel.fromJson(c2bmembersData);
+    /// Оставляем только schema для проверки присутствия на устройстве
     final List<String> schemaApplications =
         c2bmembersModel.c2bmembersModel.map((c2bmember) => c2bmember.schema).toList();
+    /// получаем список schema установленных банков
     final List<String> installedSchemas = (await _channel.invokeMethod('getInstalledBanks', {
       'schema_applications': schemaApplications,
     }) as List)
         .map((installed) => installed as String)
         .toList();
     final c2bmembersInstalled = <C2bmemberModel>[];
+    /// сравниваем список schema с c2bmembersModel, который пришел с ссылки https://qr.nspk.ru/proxyapp/c2bmembers.json
     for (int c2bmembersModelIndex = 0;
         c2bmembersModelIndex < c2bmembersModel.c2bmembersModel.length;
         c2bmembersModelIndex++) {
@@ -45,7 +53,9 @@ class Sbp {
     return c2bmembersInstalled;
   }
 
-  static Future<bool> openBank(String packageName) async => await _channel.invokeMethod(
+  /// открываем банк: Android
+  /// отдаем ссылку в виде 'https://qr.nspk.ru/...'
+  static Future<bool> openAndroidBank(String packageName) async => await _channel.invokeMethod(
         'openBank',
         {
           'url': 'https://qr.nspk.ru/AD10006K1GQ7788G9ACAAM970SGCOLNM?type=02&&sum=1100&cur=RUB&crc=CD70',
@@ -53,10 +63,12 @@ class Sbp {
         },
       );
 
-  static Future<bool> openIOS(String schema) async => await _channel.invokeMethod(
+  /// открываем банк: IOS
+  /// отдаем ссылку в виде 'https://qr.nspk.ru/...'
+  static Future<bool> openBankIOS(String schema) async => await _channel.invokeMethod(
         'openBank',
         {
-          'link': 'https://qr.nspk.ru/AD10006K1GQ7788G9ACAAM970SGCOLNM?type=02&&sum=1100&cur=RUB&crc=CD70',
+          'url': 'https://qr.nspk.ru/AD10006K1GQ7788G9ACAAM970SGCOLNM?type=02&&sum=1100&cur=RUB&crc=CD70',
           'schema': schema,
         },
       );
