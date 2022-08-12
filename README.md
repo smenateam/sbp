@@ -5,7 +5,8 @@ Flutter плагин, с помощью которого можно получи
 
 <p float="left">
  <img src="/docs/screenshots/sbp_android1.jpg?raw=true" height="600">
- <img src="/docs/screenshots/sbp_android1.jpg?raw=true" height="600">
+ <div width="50"></div>
+ <img src="/docs/screenshots/sbp_android2.jpg?raw=true" height="600">
 </p>
 
 ## Добавление зависимостей
