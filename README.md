@@ -39,16 +39,15 @@ IOS. Список поддерживаемых СБП банков можно п
 Либо можно воспользоваться текущим json добавленным мною в проект 11.08.2022:
 * Android: /sbp/lib/asset_links_data.dart
 * IOS: /sbp/lib/c2bmembers_data.dart
-<pre>
-<b>Sbp.getAndroidInstalledByAssetLinksJsonBanks(List<Map<String, dynamic>> assetLinks): Android</b>
-Передается переменная(json /sbp/lib/asset_links_data.dart), которая парсится и возвращает 
-List<ApplicationInfoModel>.
+
+<b>Sbp.getAndroidInstalledByAssetLinksJsonBanks(List<Map<String, dynamic>> assetLinks): Android</b>  
+Передается переменная(json /sbp/lib/asset_links_data.dart), которая парсится и возвращает List<ApplicationInfoModel>.
 <b>ApplicationInfoModel</b> содержит в себе поля такие как:
 * name - имя приложения
 * packageName - packageName приложения
 * bitmap - bitmap иконки приложения
 
-<b>Sbp.getIOSInstalledByC2bmembersJsonBanks(Map<String, dynamic> c2bmembersData): IOS</b>
+<b>Sbp.getIOSInstalledByC2bmembersJsonBanks(Map<String, dynamic> c2bmembersData): IOS</b>  
 Передается переменная(json /sbp/lib/c2bmembers_data.dart), которая парсится и возвращает
 <b>List<C2bmembersModel></b>.
 <b>C2bmembersModel</b> содержит в себе поля такие как:
@@ -60,20 +59,19 @@ List<ApplicationInfoModel>.
     * schema - schema приложения
     * packageName - packageName приложения
 
-Также я предусмотрел то, что json может поменяться(если поднимать свой сервер с подкачкой данных)
+Также я предусмотрел то, что json может поменяться(если поднимать свой сервер с подкачкой данных)  
 
-<b>Sbp.getAndroidInstalledByPackageNameBanks(List<String> packageNames) : Android</b>
+<b>Sbp.getAndroidInstalledByPackageNameBanks(List<String> packageNames) : Android</b>  
 Передаем список packageNames поддерживаемых СБП банков. Возвращается List<String> packageNames,
 которые установлены на устройстве пользователя
 
-<b>Sbp.getIOSInstalledBySchemesBanks(List<String> schemes)</b>
+<b>Sbp.getIOSInstalledBySchemesBanks(List<String> schemes)</b>  
 Передаем список schemas поддерживаемых СБП банков. List<String> schemes,
 которые установлены на устройстве пользователя
 
 
-<b>Sbp.openAndroidBank(String url, String packageName)</b>
+<b>Sbp.openAndroidBank(String url, String packageName)</b>  
 Передаем url вида https://qr.nspk.ru/.../ и packageName приложения, в котором нужно открыть СБП
 
-<b>Sbp.openIOSBank(String url, String packageName)</b>
+<b>Sbp.openIOSBank(String url, String packageName)</b>  
 Передаем url вида https://qr.nspk.ru/.../ и schema приложения, в котором нужно открыть СБП
-</pre>
