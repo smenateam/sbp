@@ -1,17 +1,18 @@
 import 'dart:typed_data';
 
+/// данные, которые приходят из натива Android
 class ApplicationInfoModel {
   late final String name;
   late final String packageName;
   late final Uint8List? bitmap;
 
   ApplicationInfoModel.fromJson(Map<dynamic, dynamic> json) {
-    name = json['name'];
-    packageName = json['package_name'];
+    name = json['name'] ?? '';
+    packageName = json['package_name'] ?? '';
     bitmap = json['bitmap'];
   }
 
   Map<String, dynamic> toMapPackageName() => {
-    'package_name': packageName,
-  };
+        'package_name': packageName,
+      };
 }

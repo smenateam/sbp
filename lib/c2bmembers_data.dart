@@ -1,3 +1,5 @@
+/// данные, которые приходят с ссылки https://qr.nspk.ru/proxyapp/c2bmembers.json
+
 final c2bmembersData = {
   "version": "1.0",
   "dictionary": [

@@ -3,8 +3,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sbp/application_info_model.dart';
-import 'package:sbp/c2bmembers_model.dart';
+import 'package:sbp/assetLinks.dart';
+import 'package:sbp/c2bmembers_data.dart';
 import 'package:sbp/sbp.dart';
 
 void main() {
@@ -12,6 +12,9 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
+  final url =
+      'https://qr.nspk.ru/AS10003P3RH0LJ2A9ROO038L6NT5RU1M?type=01&bank=000000000001&sum=10000&cur=RUB&crc=F3D0';
+
   const MyApp({Key? key}) : super(key: key);
 
   @override
@@ -19,25 +22,24 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   @override
   void initState() {
     super.initState();
-    initPlatformState();
+    getInstalledBanks();
   }
 
-  List<ApplicationInfoModel> applicationInfoModel = [];
-  List<C2bmemberModel> c2bmemberModel = [];
+  List<dynamic> informations = [];
 
-  Future<void> initPlatformState() async {
+  Future<void> getInstalledBanks() async {
     try {
       if (Platform.isAndroid) {
-        applicationInfoModel = await Sbp.getAndroidInstalledBanks;
+        informations = await Sbp.getAndroidInstalledByAssetLinksJsonBanks(assetLinks);
       }
       if (Platform.isIOS) {
-        c2bmemberModel = await Sbp.getIOSInstalledBanks;
+        informations = await Sbp.getIOSInstalledByC2bmembersJsonBanks(c2bmembersData);
       }
     } on PlatformException {}
+    setState(() {});
   }
 
   @override
@@ -45,39 +47,59 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('СПБ'),
         ),
         body: SingleChildScrollView(
           child: Column(
-              children: applicationInfoModel
-                  .map(
-                    (applicationInfo) => Column(
-                      children: [
-                        //Image.network(e.logoURL),
-                        GestureDetector(
-                          onTap: () => openBank(applicationInfo.packageName),
-                          child: SizedBox(
-                            height: 200,
-                            child: Center(
-                              child: Text('Running on: ${applicationInfo.name}\n'),
+            children: [
+              if (Platform.isAndroid)
+                ...informations
+                    .map(
+                      (applicationInfo) => Column(
+                        children: [
+                          Image.memory(applicationInfo.bitmap!),
+                          GestureDetector(
+                            onTap: () => openAndroidBank(widget.url, applicationInfo.packageName),
+                            child: SizedBox(
+                              height: 200,
+                              child: Center(
+                                child: Text('Running on: ${applicationInfo.name}\n'),
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  )
-                  .toList()),
+                        ],
+                      ),
+                    )
+                    .toList(),
+              if (Platform.isIOS)
+                ...informations
+                    .map(
+                      (c2bmember) => Column(
+                        children: [
+                          //Image.network(c2bmember.logoURL),
+                          GestureDetector(
+                            onTap: () => openIOSBank(widget.url, c2bmember.schema),
+                            child: SizedBox(
+                              height: 200,
+                              child: Center(
+                                child: Text('Running on: ${c2bmember.bankName}\n'),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                    .toList(),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Future<void> openBank(String information) async {
-    if (Platform.isAndroid) {
-      await Sbp.openAndroidBank(information);
-    }
-    if (Platform.isIOS) {
-      await Sbp.openBankIOS(information);
-    }
-  }
+  /// передается package_name
+  Future<void> openAndroidBank(String url, String packageName) async => await Sbp.openAndroidBank(url, packageName);
+
+  /// передается scheme
+  Future<void> openIOSBank(String url, String scheme) async => await Sbp.openBankIOS(url, scheme);
 }
