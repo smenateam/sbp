@@ -1,6 +1,6 @@
 /// данные, которые приходят с ссылки https://qr.nspk.ru/.well-known/assetlinks.json
 
-final assetLinks = [
+final assetLinksData = [
   {
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {

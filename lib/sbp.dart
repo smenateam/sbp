@@ -83,10 +83,10 @@ class Sbp {
     final List<String> installedSchemeBanks = [];
 
     /// сравниваем список schema с c2bmembersModel, который пришел с ссылки https://qr.nspk.ru/proxyapp/c2bmembers.json
-    for (int c2bmembersModelIndex = 0; c2bmembersModelIndex < schemaApplications.length; c2bmembersModelIndex++) {
+    for (int schemaApplicationsIndex = 0; schemaApplicationsIndex < schemaApplications.length; schemaApplicationsIndex++) {
       for (int indexInstalledSchema = 0; indexInstalledSchema < installedSchemas.length; indexInstalledSchema++) {
-        if (schemaApplications[c2bmembersModelIndex] == installedSchemas[indexInstalledSchema]) {
-          installedSchemeBanks.add(schemaApplications[c2bmembersModelIndex]);
+        if (schemaApplications[schemaApplicationsIndex] == installedSchemas[indexInstalledSchema]) {
+          installedSchemeBanks.add(schemaApplications[schemaApplicationsIndex]);
         }
       }
     }
