@@ -39,11 +39,11 @@ IOS. Список поддерживаемых СБП банков можно п
 Либо можно воспользоваться текущим json добавленным мною в проект 11.08.2022:
 * Android: /sbp/lib/asset_links_data.dart
 * IOS: /sbp/lib/c2bmembers_data.dart
-
+<pre>
 <b>Sbp.getAndroidInstalledByAssetLinksJsonBanks(List<Map<String, dynamic>> assetLinks): Android</b>
 Передается переменная(json /sbp/lib/asset_links_data.dart), которая парсится и возвращает 
 List<ApplicationInfoModel>.
-!<b>ApplicationInfoModel!</b> содержит в себе поля такие как:
+<b>ApplicationInfoModel</b> содержит в себе поля такие как:
 * name - имя приложения
 * packageName - packageName приложения
 * bitmap - bitmap иконки приложения
@@ -76,3 +76,4 @@ List<ApplicationInfoModel>.
 
 <b>Sbp.openIOSBank(String url, String packageName)</b>
 Передаем url вида https://qr.nspk.ru/.../ и schema приложения, в котором нужно открыть СБП
+</pre>

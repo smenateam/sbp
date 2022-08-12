@@ -2,8 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:sbp/assetLinks.dart';
+import 'package:sbp/asset_links_data.dart';
 import 'package:sbp/c2bmembers_data.dart';
 import 'package:sbp/sbp.dart';
 
@@ -33,12 +32,14 @@ class _MyAppState extends State<MyApp> {
   Future<void> getInstalledBanks() async {
     try {
       if (Platform.isAndroid) {
-        informations = await Sbp.getAndroidInstalledByAssetLinksJsonBanks(assetLinks);
+        informations = await Sbp.getAndroidInstalledByAssetLinksJsonBanks(assetLinksData);
       }
       if (Platform.isIOS) {
         informations = await Sbp.getIOSInstalledByC2bmembersJsonBanks(c2bmembersData);
       }
-    } on PlatformException {}
+    } on Exception catch (e) {
+      throw Exception(e);
+    }
     setState(() {});
   }
 
