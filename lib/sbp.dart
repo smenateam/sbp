@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/services.dart';
-import 'package:sbp/application_info_model.dart';
-import 'package:sbp/asset_link_model.dart';
-import 'package:sbp/c2bmembers_model.dart';
+import 'package:sbp/models/application_info_model.dart';
+import 'package:sbp/models/asset_link_model.dart';
+import 'package:sbp/models/c2bmembers_model.dart';
 
 class Sbp {
   static const MethodChannel _channel = MethodChannel('sbp');

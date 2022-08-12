@@ -2,8 +2,10 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:sbp/asset_links_data.dart';
-import 'package:sbp/c2bmembers_data.dart';
+import 'package:sbp/data/asset_links_data.dart';
+import 'package:sbp/data/c2bmembers_data.dart';
+import 'package:sbp/models/application_info_model.dart';
+import 'package:sbp/models/c2bmembers_model.dart';
 import 'package:sbp/sbp.dart';
 
 void main() {
@@ -50,52 +52,169 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('СПБ'),
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              if (Platform.isAndroid)
-                ...informations
-                    .map(
-                      (applicationInfo) => Column(
-                        children: [
-                          Image.memory(applicationInfo.bitmap!),
-                          GestureDetector(
-                            onTap: () => openAndroidBank(widget.url, applicationInfo.packageName),
-                            child: SizedBox(
-                              height: 200,
-                              child: Center(
-                                child: Text('Running on: ${applicationInfo.name}\n'),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                    .toList(),
-              if (Platform.isIOS)
-                ...informations
-                    .map(
-                      (c2bmember) => Column(
-                        children: [
-                          //Image.network(c2bmember.logoURL),
-                          GestureDetector(
-                            onTap: () => openIOSBank(widget.url, c2bmember.schema),
-                            child: SizedBox(
-                              height: 200,
-                              child: Center(
-                                child: Text('Running on: ${c2bmember.bankName}\n'),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                    .toList(),
-            ],
+        body: Center(
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            decoration:
+                const BoxDecoration(color: Colors.tealAccent, borderRadius: BorderRadius.all(Radius.circular(10))),
+            child: Builder(builder: (context) {
+              return GestureDetector(
+                onTap: () => showModalBottomSheet(
+                  context: context,
+                  //isScrollControlled: true,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(20),
+                    ),
+                  ),
+                  builder: (ctx) => SbpModalBottomSheetWidget(informations, widget.url),
+                ),
+                child: const Text('Открыть модальное окно'),
+              );
+            }),
           ),
         ),
       ),
     );
+  }
+}
+
+class SbpModalBottomSheetWidget extends StatelessWidget {
+  final List<dynamic> informations;
+  final String url;
+
+  const SbpModalBottomSheetWidget(this.informations, this.url, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    if (informations.isNotEmpty) {
+      return Column(
+        children: [
+          const SizedBox(height: 10),
+          Container(
+            height: 5,
+            width: 50,
+            decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(10),
+                ),
+                color: Colors.grey),
+          ),
+          const SizedBox(height: 20),
+          Image.asset(
+            'assets/sbp.png',
+            width: 100,
+          ),
+          const SizedBox(height: 10),
+          const Text('Выберите банк для оплаты по СБП'),
+          const SizedBox(height: 20),
+          Expanded(
+            child: ListView.separated(
+              itemCount: informations.length,
+              itemBuilder: (ctx, index) {
+                if (Platform.isAndroid) {
+                  final information = informations[index] as ApplicationInfoModel;
+                  return Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.white70,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(20),
+                      ),
+                    ),
+                    child: GestureDetector(
+                      onTap: () => openAndroidBank(url, information.packageName),
+                      child: Row(
+                        children: [
+                          const SizedBox(width: 10),
+                          Image.memory(
+                            information.bitmap!,
+                            width: 80,
+                          ),
+                          const SizedBox(width: 20),
+                          Center(
+                            child: Text(information.name),
+                          ),
+                          const SizedBox(width: 10)
+                        ],
+                      ),
+                    ),
+                  );
+                }
+                final information = informations[index] as C2bmemberModel;
+                return Container(
+                  decoration: const BoxDecoration(
+                    color: Colors.white70,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20),
+                    ),
+                  ),
+                  child: GestureDetector(
+                    onTap: () => openIOSBank(url, information.schema),
+                    child: Row(
+                      children: [
+                        const SizedBox(width: 10),
+                        Image.network(
+                          information.logoURL,
+                          width: 80,
+                        ),
+                        const SizedBox(width: 20),
+                        Center(
+                          child: Text(information.bankName),
+                        ),
+                        const SizedBox(width: 10)
+                      ],
+                    ),
+                  ),
+                );
+              },
+              separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 10),
+            ),
+          ),
+          const SizedBox(height: 20),
+        ],
+      );
+    } else {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const SizedBox(height: 10),
+          Container(
+            height: 5,
+            width: 50,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(
+                Radius.circular(10),
+              ),
+              color: Colors.grey,
+            ),
+          ),
+          const SizedBox(height: 20),
+          Image.asset(
+            'assets/sbp.png',
+            width: 100,
+          ),
+          const SizedBox(height: 40),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Container(
+                height: 80,
+                decoration: const BoxDecoration(
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                ),
+                child: const Center(
+                  child: Text('У вас нет банков для оплаты по СБП'),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 50),
+        ],
+      );
+    }
   }
 
   /// передается package_name

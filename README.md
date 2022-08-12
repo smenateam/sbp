@@ -3,6 +3,9 @@
 Flutter плагин, с помощью которого можно получить список банков установленных на устройстве 
 пользователя, а также запустить ссылку на оплату по СБП вида https://qr.nspk.ru/.../
 
+![screens/1.png](/docs/screenshots/sbp_android1.jpg?raw=true)
+![screens/2.png](/docs/screenshots/sbp_android2.jpg?raw=true)
+
 ## Добавление зависимостей
 Для использования плагина добавьте его в pubspec.yaml файл.
 
@@ -31,24 +34,27 @@ IOS. Список поддерживаемых СБП банков можно п
 ## Описание функций
 
 Для использования sbp и получения текущей информации по поддерживаемым банкам СБП нужно поднять 
-собственный сервер, который будет раз в какой-то период подтягивать новую информацию по банкам
+собственный сервер, который будет раз в какой-то период подтягивать новую информацию по банкам.
+<b>Предупреждение!</b>Если будете пользоваться json, не забудьте поменять ссылки на картинки в файле
+/sbp/lib/data/c2bmembers_data.dart так, как они грузятся долго или не грузятся вообще.
+
 Ссылки с текущими банками с оффициального сайта СБП
 * [Android](https://qr.nspk.ru/.well-known/assetlinks.json)
 * [IOS](https://qr.nspk.ru/proxyapp/c2bmembers.json)
 
 Либо можно воспользоваться текущим json добавленным мною в проект 11.08.2022:
-* Android: /sbp/lib/asset_links_data.dart
-* IOS: /sbp/lib/c2bmembers_data.dart
+* Android: /sbp/lib/data/asset_links_data.dart
+* IOS: /sbp/lib/data/c2bmembers_data.dart
 
 <b>Sbp.getAndroidInstalledByAssetLinksJsonBanks(List<Map<String, dynamic>> assetLinks): Android</b>  
-Передается переменная(json /sbp/lib/asset_links_data.dart), которая парсится и возвращает List<ApplicationInfoModel>.
+Передается переменная(json /sbp/lib/data/asset_links_data.dart), которая парсится и возвращает List<ApplicationInfoModel>.
 <b>ApplicationInfoModel</b> содержит в себе поля такие как:
 * name - имя приложения
 * packageName - packageName приложения
 * bitmap - bitmap иконки приложения
 
 <b>Sbp.getIOSInstalledByC2bmembersJsonBanks(Map<String, dynamic> c2bmembersData): IOS</b>  
-Передается переменная(json /sbp/lib/c2bmembers_data.dart), которая парсится и возвращает
+Передается переменная(json /sbp/lib/data/c2bmembers_data.dart), которая парсится и возвращает
 <b>List<C2bmembersModel></b>.
 <b>C2bmembersModel</b> содержит в себе поля такие как:
 * version - версия json

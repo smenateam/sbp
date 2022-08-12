@@ -1,4 +1,4 @@
-import 'package:sbp/asset_link_target_model.dart';
+import 'package:sbp/models/asset_link_target_model.dart';
 
 /// данные, которые приходят с сервера: поддерживаемые банки(СБП) Android
 class AssetLinkModel{
