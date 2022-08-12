@@ -3,8 +3,10 @@
 Flutter плагин, с помощью которого можно получить список банков установленных на устройстве 
 пользователя, а также запустить ссылку на оплату по СБП вида https://qr.nspk.ru/.../
 
-![screens/1.png](/docs/screenshots/sbp_android1.jpg?raw=true)
-![screens/2.png](/docs/screenshots/sbp_android2.jpg?raw=true)
+<p float="left">
+ <img src="/docs/screenshots/sbp_android1.jpg?raw=true" height="600">
+ <img src="/docs/screenshots/sbp_android1.jpg?raw=true" height="600">
+</p>
 
 ## Добавление зависимостей
 Для использования плагина добавьте его в pubspec.yaml файл.
