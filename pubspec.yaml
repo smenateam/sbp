@@ -1,6 +1,8 @@
 name: sbp
 description: A new flutter plugin project.
 version: 0.0.1
+repository: https://github.com/smenateam/sbp/tree/master/lib
+homepage: https://github.com/smenateam/sbp
 
 environment:
   sdk: ">=2.16.1 <3.0.0"
