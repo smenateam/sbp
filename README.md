@@ -4,8 +4,8 @@ Flutter плагин, с помощью которого можно получи
 пользователя, а также запустить ссылку на оплату по СБП вида https://qr.nspk.ru/.../
 
 <p float="left">
- <img src="/docs/sbp/screenshots/sbp_android1.jpg?raw=true" height="600">
- <img src="/docs/sbp/screenshots/sbp_android2.jpg?raw=true" height="600">
+ <img src="/doc/sbp/screenshots/sbp_android1.jpg?raw=true" height="600">
+ <img src="/doc/sbp/screenshots/sbp_android2.jpg?raw=true" height="600">
 </p>
 
 ## Добавление зависимостей
