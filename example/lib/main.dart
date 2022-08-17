@@ -31,6 +31,7 @@ class _MyAppState extends State<MyApp> {
 
   List<dynamic> informations = [];
 
+  /// Получаем установленные банки
   Future<void> getInstalledBanks() async {
     try {
       if (Platform.isAndroid) {
@@ -79,6 +80,69 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
+class SbpHeaderModalSheet extends StatelessWidget {
+  const SbpHeaderModalSheet({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const SizedBox(height: 10),
+        Container(
+          height: 5,
+          width: 50,
+          decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(
+                Radius.circular(10),
+              ),
+              color: Colors.grey),
+        ),
+        const SizedBox(height: 20),
+        Image.asset(
+          'assets/sbp.png',
+          width: 100,
+        ),
+        const SizedBox(height: 10),
+        const Text('Выберите банк для оплаты по СБП'),
+        const SizedBox(height: 20),
+      ],
+    );
+  }
+}
+
+class SbpModalBottomSheetEmptyListBankWidget extends StatelessWidget {
+  const SbpModalBottomSheetEmptyListBankWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const SbpHeaderModalSheet(),
+        Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Container(
+              height: 80,
+              decoration: const BoxDecoration(
+                color: Colors.grey,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(10),
+                ),
+              ),
+              child: const Center(
+                child: Text('У вас нет банков для оплаты по СБП'),
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 50),
+      ],
+    );
+  }
+}
+
+/// Модальное окно с банками
 class SbpModalBottomSheetWidget extends StatelessWidget {
   final List<dynamic> informations;
   final String url;
@@ -87,27 +151,11 @@ class SbpModalBottomSheetWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /// если есть информация о банках, то отображаем их
     if (informations.isNotEmpty) {
       return Column(
         children: [
-          const SizedBox(height: 10),
-          Container(
-            height: 5,
-            width: 50,
-            decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(10),
-                ),
-                color: Colors.grey),
-          ),
-          const SizedBox(height: 20),
-          Image.asset(
-            'assets/sbp.png',
-            width: 100,
-          ),
-          const SizedBox(height: 10),
-          const Text('Выберите банк для оплаты по СБП'),
-          const SizedBox(height: 20),
+          const SbpHeaderModalSheet(),
           Expanded(
             child: ListView.separated(
               itemCount: informations.length,
@@ -174,46 +222,7 @@ class SbpModalBottomSheetWidget extends StatelessWidget {
         ],
       );
     } else {
-      return Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const SizedBox(height: 10),
-          Container(
-            height: 5,
-            width: 50,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(
-                Radius.circular(10),
-              ),
-              color: Colors.grey,
-            ),
-          ),
-          const SizedBox(height: 20),
-          Image.asset(
-            'assets/sbp.png',
-            width: 100,
-          ),
-          const SizedBox(height: 40),
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Container(
-                height: 80,
-                decoration: const BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(10),
-                  ),
-                ),
-                child: const Center(
-                  child: Text('У вас нет банков для оплаты по СБП'),
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(height: 50),
-        ],
-      );
+      return const SbpModalBottomSheetEmptyListBankWidget();
     }
   }
 
