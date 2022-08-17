@@ -50,7 +50,9 @@ Or you can use the current json I added to the project on 08/11/2022:
 
 ### Android
 
-  List<ApplicationInfoModel> informations = await Sbp.getAndroidInstalledByAssetLinksJsonBanks(assetLinksData)
+```
+List<ApplicationInfoModel> informations = await Sbp.getAndroidInstalledByAssetLinksJsonBanks(assetLinksData)
+```
 
 A variable is passed (json /sbp/lib/data/asset_links_data.dart), which is parsed and returns a List<ApplicationInfoModel>.
 <b>ApplicationInfoModel</b> contains fields such as:
@@ -60,19 +62,24 @@ A variable is passed (json /sbp/lib/data/asset_links_data.dart), which is parsed
 
 I also foresaw that json can change (if you raise your server with data paging)  
 
-  List<ApplicationInfoModel> informations = await Sbp.getAndroidInstalledByPackageNameBanks(List<String> packageNames)
+```
+List<ApplicationInfoModel> informations = await Sbp.getAndroidInstalledByPackageNameBanks(List<String> packageNames)
+```
 
 We pass the packageNames list of banks supported by the SBP. Returns List<String> packageNames,
 installed on the user's device
 
-
-  Sbp.openAndroidBank(String url, String packageName)
+```
+Sbp.openAndroidBank(String url, String packageName)
+```
 
 We pass the url of the form https://qr.nspk.ru/.../ and the packageName of the application in which you want to open the SBP
 
 ### IOS
 
-  List<C2bmembersModel> informations = await Sbp.getIOSInstalledByC2bmembersJsonBanks(c2bmembersData)
+```
+List<C2bmembersModel> informations = await Sbp.getIOSInstalledByC2bmembersJsonBanks(c2bmembersData)
+```
 
 A variable is passed (json /sbp/lib/data/c2bmembers_data.dart), which is parsed and returns 
 <b>List C2bmembersModel </b>.
@@ -90,11 +97,15 @@ A variable is passed (json /sbp/lib/data/c2bmembers_data.dart), which is parsed 
 
 I also foresaw that json can change (if you raise your server with data paging)
 
-  List<C2bmembersModel> informations = Sbp.getIOSInstalledBySchemesBanks(List<String> schemes)
+```
+List<C2bmembersModel> informations = Sbp.getIOSInstalledBySchemesBanks(List<String> schemes)
+```
 
 We pass a list of schemas supported by the SBP banks. List<String> schemes,
 installed on the user's device
 
-  Sbp.openIOSBank(String url, String packageName)
+```
+Sbp.openIOSBank(String url, String packageName)
+```
 
 We pass the url of the form https://qr.nspk.ru/.../ and the schema of the application in which you want to open the SBP
