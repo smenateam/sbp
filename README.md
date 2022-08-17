@@ -105,7 +105,7 @@ We pass a list of schemas supported by the SBP banks. List<String> schemes,
 installed on the user's device
 
 ```
-Sbp.openIOSBank(String url, String packageName)
+Sbp.openIOSBank(String url, String schema)
 ```
 
 We pass the url of the form https://qr.nspk.ru/.../ and the schema of the application in which you want to open the SBP

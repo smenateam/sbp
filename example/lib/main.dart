@@ -35,10 +35,12 @@ class _MyAppState extends State<MyApp> {
   Future<void> getInstalledBanks() async {
     try {
       if (Platform.isAndroid) {
-        informations = await Sbp.getAndroidInstalledByAssetLinksJsonBanks(assetLinksData);
+        informations =
+            await Sbp.getAndroidInstalledByAssetLinksJsonBanks(assetLinksData);
       }
       if (Platform.isIOS) {
-        informations = await Sbp.getIOSInstalledByC2bmembersJsonBanks(c2bmembersData);
+        informations =
+            await Sbp.getIOSInstalledByC2bmembersJsonBanks(c2bmembersData);
       }
     } on Exception catch (e) {
       throw Exception(e);
@@ -56,8 +58,9 @@ class _MyAppState extends State<MyApp> {
         body: Center(
           child: Container(
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            decoration:
-                const BoxDecoration(color: Colors.tealAccent, borderRadius: BorderRadius.all(Radius.circular(10))),
+            decoration: const BoxDecoration(
+                color: Colors.tealAccent,
+                borderRadius: BorderRadius.all(Radius.circular(10))),
             child: Builder(builder: (context) {
               return GestureDetector(
                 onTap: () => showModalBottomSheet(
@@ -68,7 +71,8 @@ class _MyAppState extends State<MyApp> {
                       top: Radius.circular(20),
                     ),
                   ),
-                  builder: (ctx) => SbpModalBottomSheetWidget(informations, widget.url),
+                  builder: (ctx) =>
+                      SbpModalBottomSheetWidget(informations, widget.url),
                 ),
                 child: const Text('Открыть модальное окно'),
               );
@@ -147,7 +151,8 @@ class SbpModalBottomSheetWidget extends StatelessWidget {
   final List<dynamic> informations;
   final String url;
 
-  const SbpModalBottomSheetWidget(this.informations, this.url, {Key? key}) : super(key: key);
+  const SbpModalBottomSheetWidget(this.informations, this.url, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -161,7 +166,8 @@ class SbpModalBottomSheetWidget extends StatelessWidget {
               itemCount: informations.length,
               itemBuilder: (ctx, index) {
                 if (Platform.isAndroid) {
-                  final information = informations[index] as ApplicationInfoModel;
+                  final information =
+                      informations[index] as ApplicationInfoModel;
                   return Container(
                     decoration: const BoxDecoration(
                       color: Colors.white70,
@@ -170,7 +176,8 @@ class SbpModalBottomSheetWidget extends StatelessWidget {
                       ),
                     ),
                     child: GestureDetector(
-                      onTap: () => openAndroidBank(url, information.packageName),
+                      onTap: () =>
+                          openAndroidBank(url, information.packageName),
                       child: Row(
                         children: [
                           const SizedBox(width: 10),
@@ -215,7 +222,8 @@ class SbpModalBottomSheetWidget extends StatelessWidget {
                   ),
                 );
               },
-              separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 10),
+              separatorBuilder: (BuildContext context, int index) =>
+                  const SizedBox(height: 10),
             ),
           ),
           const SizedBox(height: 20),
@@ -227,8 +235,10 @@ class SbpModalBottomSheetWidget extends StatelessWidget {
   }
 
   /// передается package_name
-  Future<void> openAndroidBank(String url, String packageName) async => await Sbp.openAndroidBank(url, packageName);
+  Future<void> openAndroidBank(String url, String packageName) async =>
+      await Sbp.openAndroidBank(url, packageName);
 
   /// передается scheme
-  Future<void> openIOSBank(String url, String scheme) async => await Sbp.openBankIOS(url, scheme);
+  Future<void> openIOSBank(String url, String scheme) async =>
+      await Sbp.openBankIOS(url, scheme);
 }
