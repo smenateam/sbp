@@ -1,6 +1,6 @@
 name: sbp
 description: Flutter plugin, with which you can get a list of banks installed on the user's device, as well as launch a link to pay via SBP like https://qr.nspk.ru/.../
-version: 0.0.2
+version: 0.0.4
 repository: https://github.com/smenateam/sbp/tree/master/lib
 homepage: https://github.com/smenateam/sbp
 
