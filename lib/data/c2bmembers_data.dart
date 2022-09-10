@@ -7,205 +7,239 @@ final c2bmembersData = {
       "bankName": "Сбербанк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000111.png",
       "schema": "bank100000000111",
-      "package_name": "ru.sberbankmobile"
+      "package_name": "ru.sberbankmobile",
+      "icon": "assets/icons/sber.png"
     },
     {
       "bankName": "Тинькофф",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000004.png",
       "schema": "bank100000000004",
-      "package_name": "com.idamob.tinkoff.android"
+      "package_name": "com.idamob.tinkoff.android",
+      "icon": "assets/icons/tinkoff.png"
     },
     {
       "bankName": "ВТБ",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000005.png",
       "schema": "bank100000000005",
-      "package_name": "ru.vtb24.mobilebanking.android"
+      "package_name": "ru.vtb24.mobilebanking.android",
+      "icon": "assets/icons/vtb.png"
     },
     {
       "bankName": "Альфа-Банк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000008.png",
       "schema": "bank100000000008",
-      "package_name": "ru.alfabank.mobile.android"
+      "package_name": "ru.alfabank.mobile.android",
+      "icon": "assets/icons/alfabank.png"
     },
     {
       "bankName": "Райффайзен Банк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000007.png",
       "schema": "bank100000000007",
-      "package_name": "ru.raiffeisennews"
+      "package_name": "ru.raiffeisennews",
+      "icon": "assets/icons/raiffeisen.png"
     },
     {
       "bankName": "Открытие",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000015.png",
       "schema": "bank100000000015",
-      "package_name": "com.openbank"
+      "package_name": "com.openbank",
+      "icon": "assets/icons/openbank.png"
     },
     {
       "bankName": "Газпромбанк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000001.png",
       "schema": "bank100000000001",
-      "package_name": "ru.gazprombank.android.mobilebank.app"
+      "package_name": "ru.gazprombank.android.mobilebank.app",
+      "icon": "assets/icons/gazprombank.png"
     },
     {
       "bankName": "Промсвязьбанк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000010.png",
       "schema": "bank100000000010",
-      "package_name": "logo.com.mbanking"
+      "package_name": "logo.com.mbanking",
+      "icon": "assets/icons/pcb.png"
     },
     {
       "bankName": "Совкомбанк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000013.png",
       "schema": "bank100000000013",
-      "package_name": "ru.sovcomcard.halva.v1"
+      "package_name": "ru.sovcomcard.halva.v1",
+      "icon": "assets/icons/sovcomcard.png"
     },
     {
       "bankName": "Росбанк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000012.png",
       "schema": "bank100000000012",
-      "package_name": "ru.rosbank.android"
+      "package_name": "ru.rosbank.android",
+      "icon": "assets/icons/rosbank.png"
     },
     {
       "bankName": "Россельхозбанк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000020.png",
       "schema": "bank100000000020",
-      "package_name": "ru.rshb.dbo"
+      "package_name": "ru.rshb.dbo",
+      "icon": "assets/icons/rshb.png"
     },
     {
       "bankName": "МКБ",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000025.png",
       "schema": "bank100000000025",
-      "package_name": "ru.mkb.mobile"
+      "package_name": "ru.mkb.mobile",
+      "icon": "assets/icons/mkb.png"
     },
     {
       "bankName": "Юникредит Банк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000030.png",
       "schema": "bank100000000030",
-      "package_name": "ru.ucb.android"
+      "package_name": "ru.ucb.android",
+      "icon": "assets/icons/ucb.png"
     },
     {
       "bankName": "Юникредит Банк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000030_new.png",
       "schema": "bank100000000030_new",
-      "package_name": "ru.unicredit.android"
+      "package_name": "ru.unicredit.android",
+      "icon": "assets/icons/ucb.png"
     },
     {
       "bankName": "Синара банк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000003.png",
       "schema": "bank100000000003",
-      "package_name": "ru.skbbank.ib"
+      "package_name": "ru.skbbank.ib",
+      "icon": "assets/icons/sinara.png"
     },
     {
       "bankName": "Газэнергобанк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000043.png",
       "schema": "bank100000000043",
-      "package_name": "ru.gebank.ib"
+      "package_name": "ru.gebank.ib",
+      "icon": "assets/icons/gebank.png"
     },
     {
       "bankName": "Авангард",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000028.jpg",
       "schema": "bank100000000028",
-      "package_name": "ru.avangard.sbp_client"
+      "package_name": "ru.avangard.sbp_client",
+      "icon": "assets/icons/avangard.png"
     },
     {
       "bankName": "Элплат",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000086.png",
       "schema": "bank100000000086",
-      "package_name": "ru.elplat.elplat2"
+      "package_name": "ru.elplat.elplat2",
+      "icon": "assets/icons/elplat.png"
     },
     {
       "bankName": "РНКБ Банк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000011.png",
       "schema": "bank100000000011",
-      "package_name": "com.bifit.rncbbeta"
+      "package_name": "com.bifit.rncbbeta",
+      "icon": "assets/icons/rncb.png"
     },
     {
       "bankName": "Экспобанк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000044.png",
       "schema": "bank100000000044",
-      "package_name": "ru.ftc.faktura.expobank"
+      "package_name": "ru.ftc.faktura.expobank",
+      "icon": "assets/icons/expobank.png"
     },
     {
       "bankName": "Банк ВБРР",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000049.png",
       "schema": "bank100000000049",
-      "package_name": "com.bssys.vbrrretail"
+      "package_name": "com.bssys.vbrrretail",
+      "icon": "assets/icons/vbrr.png"
     },
     {
       "bankName": "RSB+ Банк Русский Стандарт",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100100000014.png",
       "schema": "bank100000000500",
-      "package_name": "ru.wildberries.razz"
+      "package_name": "ru.wildberries.razz",
+      "icon": "assets/icons/brs.png"
     },
     {
       "bankName": "АБ РОССИЯ",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000095.png",
       "schema": "bank100000000095",
-      "package_name": "ru.artsofte.russiafl"
+      "package_name": "ru.artsofte.russiafl",
+      "icon": "assets/icons/artsofte.png"
     },
     {
       "bankName": "ДБО Фактура",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000900.png",
       "schema": "bank100000000900",
-      "package_name": "ru.ftc.faktura.multibank"
+      "package_name": "ru.ftc.faktura.multibank",
+      "icon": "assets/icons/factura.png"
     },
     {
       "bankName": "КБ Хлынов",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000056.png",
       "schema": "bank100000000056",
-      "package_name": "ru.bank_hlynov.xbank"
+      "package_name": "ru.bank_hlynov.xbank",
+      "icon": "assets/icons/hlynov.png"
     },
     {
       "bankName": "Бланк банк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000053.png",
       "schema": "bank100000000053",
-      "package_name": "ru.ftc.faktura.vesta"
+      "package_name": "ru.ftc.faktura.vesta",
+      "icon": "assets/icons/blanc.png"
     },
     {
       "bankName": "КБ Солидарность",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000121.png",
       "schema": "bank100000000121",
-      "package_name": "com.isimplelab.ibank.solidarnost"
+      "package_name": "com.isimplelab.ibank.solidarnost",
+      "icon": "assets/icons/solidarnost.png"
     },
     {
       "bankName": "Банк ДОМ.РФ",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000082.png",
       "schema": "bank100000000082",
-      "package_name": "com.bssys.roscapretail"
+      "package_name": "com.bssys.roscapretail",
+      "icon": "assets/icons/roscap.png"
     },
     {
       "bankName": "Хакасский муниципальный банк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000127.png",
       "schema": "bank100000000127",
-      "package_name": "ru.ftc.faktura.kbhmb"
+      "package_name": "ru.ftc.faktura.kbhmb",
+      "icon": "assets/icons/hakasskii.png"
     },
     {
       "bankName": "МТС-Банк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000017.png",
       "schema": "bank100000000017",
-      "package_name": "ru.mts.money"
+      "package_name": "ru.mts.money",
+      "icon": "assets/icons/mts.png"
     },
     {
       "bankName": "Банк ПСКБ",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000087.png",
       "schema": "bank100000000087",
-      "package_name": "ru.ftc.faktura.pskb"
+      "package_name": "ru.ftc.faktura.pskb",
+      "icon": "assets/icons/mts.pskb"
     },
     {
       "bankName": "Левобережный",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000052.png",
       "schema": "bank100000000052",
-      "package_name": "ru.ftc.faktura.nskbl"
+      "package_name": "ru.ftc.faktura.nskbl",
+      "icon": "assets/icons/levoberezhny.pskb"
     },
     {
       "bankName": "Ак Барс Банк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000006.png",
       "schema": "bank100000000006",
-      "package_name": "ru.akbars.mobile"
+      "package_name": "ru.akbars.mobile",
+      "icon": "assets/icons/akbars.png"
     },
     {
       "bankName": "КБ РостФинанс",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000098.png",
       "schema": "bank100000000098",
-      "package_name": "ru.ftc.faktura.rostfinance"
+      "package_name": "ru.ftc.faktura.rostfinance",
+      "icon": "assets/icons/rostfb.png"
     },
     {
       "bankName": "Быстробанк",
@@ -222,7 +256,8 @@ final c2bmembersData = {
     {
       "bankName": "Кредит Европа Банк Россия",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000027.png",
-      "schema": "bank100000000027"
+      "schema": "bank100000000027",
+      "icon": "assets/icons/kebr.png"
     },
     {
       "bankName": "Алмазэргиэнбанк",
@@ -276,7 +311,8 @@ final c2bmembersData = {
       "bankName": "Абсолют Банк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000047.png",
       "schema": "bank100000000047",
-      "package_name": "ru.ftc.faktura.absolutbank"
+      "package_name": "ru.ftc.faktura.absolutbank",
+      "icon": "assets/icons/absolut.png"
     },
     {
       "bankName": "Модульбанк",
@@ -324,25 +360,29 @@ final c2bmembersData = {
       "bankName": "Банк Санкт-Петербург",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000029.png",
       "schema": "bank100000000029",
-      "package_name": "ru.bspb"
+      "package_name": "ru.bspb",
+      "icon": "assets/icons/bspb.png"
     },
     {
       "bankName": "Кубань Кредит",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000050.png",
       "schema": "bank100000000050",
-      "package_name": "com.isimplelab.ibank.kubankredit"
+      "package_name": "com.isimplelab.ibank.kubankredit",
+      "icon": "assets/icons/kubankredit.png"
     },
     {
       "bankName": "Точка ФК Открытие",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000065.png",
       "schema": "bank100000000065",
-      "package_name": "com.tochka.bank"
+      "package_name": "com.tochka.bank",
+      "icon": "assets/icons/openbank.png"
     },
     {
       "bankName": "НОВИКОМБАНК",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000177.png",
       "schema": "bank100000000177",
-      "package_name": "com.bssys.novikomretail"
+      "package_name": "com.bssys.novikomretail",
+      "icon": "assets/icons/novikom.png"
     },
     {
       "bankName": "РосДорБанк",
@@ -384,7 +424,8 @@ final c2bmembersData = {
       "bankName": "Транскапиталбанк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000034.png",
       "schema": "bank100000000034",
-      "package_name": "ru.ftc.faktura.tkbbank"
+      "package_name": "ru.ftc.faktura.tkbbank",
+      "icon": "assets/icons/tkbbank.png"
     },
     {
       "bankName": "Челябинвестбанк",
@@ -426,13 +467,15 @@ final c2bmembersData = {
       "bankName": "Почта Банк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000016.png",
       "schema": "bank100000000016",
-      "package_name": "ru.letobank.Prometheus"
+      "package_name": "ru.letobank.Prometheus",
+      "icon": "assets/icons/letobank.png"
     },
     {
       "bankName": "Банк Русский Стандарт",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000014.png",
       "schema": "bank100000000014",
-      "package_name": "ru.simpls.brs2.mobbank"
+      "package_name": "ru.simpls.brs2.mobbank",
+      "icon": "assets/icons/brs.png"
     },
     {
       "bankName": "Дальневосточный Банк",
@@ -720,7 +763,8 @@ final c2bmembersData = {
       "bankName": "Центр-Инвест банк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000059.png",
       "schema": "bank100000000059",
-      "package_name": "ru.centrinvest.mobilebanking2018"
+      "package_name": "ru.centrinvest.mobilebanking2018",
+      "icon": "assets/icons/centrinvest.png"
     },
     {
       "bankName": "Датабанк",
@@ -756,7 +800,8 @@ final c2bmembersData = {
       "bankName": "Банк Зенит",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000045.png",
       "schema": "bank100000000045",
-      "package_name": "ru.zenit.android"
+      "package_name": "ru.zenit.android",
+      "icon": "assets/icons/zenit.png"
     },
     {
       "bankName": "Фора-банк",
@@ -798,7 +843,8 @@ final c2bmembersData = {
       "bankName": "Мособлбанк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000221.png",
       "schema": "bank100000000221",
-      "package_name": "com.mob.android"
+      "package_name": "com.mob.android",
+      "icon": "assets/icons/mosoblbank.png"
     },
     {
       "bankName": "Ситибанк",
@@ -816,13 +862,15 @@ final c2bmembersData = {
       "bankName": "КИВИ банк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000009.png",
       "schema": "bank100000000009",
-      "package_name": "ru.mw"
+      "package_name": "ru.mw",
+      "icon": "assets/icons/qivi.png"
     },
     {
       "bankName": "УРАЛСИБ",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000026.png",
       "schema": "bank100000000026",
-      "package_name": "ru.bankuralsib.mb.android"
+      "package_name": "ru.bankuralsib.mb.android",
+      "icon": "assets/icons/bankuralsib.png"
     },
     {
       "bankName": "Союз",
@@ -840,7 +888,8 @@ final c2bmembersData = {
       "bankName": "УБРиР",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000031.png",
       "schema": "bank100000000031",
-      "package_name": "cb.ibank"
+      "package_name": "cb.ibank",
+      "icon": "assets/icons/ybrir.png"
     },
     {
       "bankName": "Приморье",
@@ -870,7 +919,8 @@ final c2bmembersData = {
       "bankName": "ОТП Банк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000018.png",
       "schema": "bank100000000018",
-      "package_name": "ru.otpbank.mobile"
+      "package_name": "ru.otpbank.mobile",
+      "icon": "assets/icons/otpbank.png"
     },
     {
       "bankName": "Крокус-Банк",
@@ -882,13 +932,15 @@ final c2bmembersData = {
       "bankName": "Хоум Кредит энд Финанс Банк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000024.png",
       "schema": "bank100000000024",
-      "package_name": "ru.homecredit.mycredit"
+      "package_name": "ru.homecredit.mycredit",
+      "icon": "assets/icons/homecredit.png"
     },
     {
       "bankName": "Ренессанс Кредит",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000032.png",
       "schema": "bank100000000032",
-      "package_name": "cz.bsc.rc"
+      "package_name": "cz.bsc.rc",
+      "icon": "assets/icons/rc.png"
     },
     {
       "bankName": "Белгородсоцбанк",
@@ -936,7 +988,8 @@ final c2bmembersData = {
       "bankName": "СМП Банк",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000036.png",
       "schema": "bank100000000036",
-      "package_name": "com.smp.android"
+      "package_name": "com.smp.android",
+      "icon": "assets/icons/smp.png"
     },
     {
       "bankName": "НК банк",
@@ -954,7 +1007,8 @@ final c2bmembersData = {
       "bankName": "ББР",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000133.png",
       "schema": "bank100000000133",
-      "package_name": "com.bifit.mobile.private.bbr"
+      "package_name": "com.bifit.mobile.private.bbr",
+      "icon": "assets/icons/bbr.png"
     },
     {
       "bankName": "Ланта-Банк",

@@ -208,9 +208,19 @@ class SbpModalBottomSheetWidget extends StatelessWidget {
                     child: Row(
                       children: [
                         const SizedBox(width: 10),
-                        Image.network(
-                          information.logoURL,
-                          width: 80,
+                        SizedBox(
+                          width: 80.0,
+                          height: 80.0,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20.0),
+                            child: information.icon.isNotEmpty
+                                ? Image.asset(
+                                    information.icon,
+                                  )
+                                : Image.network(
+                                    information.logoURL,
+                                  ),
+                          ),
                         ),
                         const SizedBox(width: 20),
                         Center(
