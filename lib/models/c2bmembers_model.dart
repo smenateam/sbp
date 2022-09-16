@@ -29,11 +29,15 @@ class C2bmemberModel {
   /// [packageName] - packageName приложения
   late final String packageName;
 
+  /// [icon] - icon приложения
+  late final String icon;
+
   /// Получение данных из словаря
   C2bmemberModel.fromJson(Map<String, dynamic> json) {
     bankName = json['bankName'] ?? '';
     logoURL = json['logoURL'] ?? '';
     schema = json['schema'] ?? '';
     packageName = json['package_name'] ?? '';
+    icon = json['icon'] ?? '';
   }
 }
