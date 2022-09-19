@@ -1,5 +1,7 @@
+package example.android
+
 buildscript {
-    ext.kotlin_version = '1.6.10'
+    ext.kotlin_version = '1.7.10'
     repositories {
         google()
         mavenCentral()
@@ -11,6 +13,14 @@ buildscript {
     }
 }
 
+android {
+    compileSdkVersion 33
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 33
+    }
+}
 allprojects {
     repositories {
         google()

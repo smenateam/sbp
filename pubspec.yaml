@@ -18,6 +18,11 @@ dev_dependencies:
   flutter_lints: ^1.0.0
 
 flutter:
+  assets:
+    - packages/sbp/assets/sbp.png
+    - packages/sbp/assets/icons/
+    - packages/sbp/assets/source/
+    - packages/sbp/assets/source_png/
   plugin:
     platforms:
       android:
