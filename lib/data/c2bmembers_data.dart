@@ -218,14 +218,14 @@ final c2bmembersData = {
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000087.png",
       "schema": "bank100000000087",
       "package_name": "ru.ftc.faktura.pskb",
-      "icon": "packages/sbp/assets/icons/mts.pskb"
+      "icon": "packages/sbp/assets/icons/mts.png"
     },
     {
       "bankName": "Левобережный",
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000052.png",
       "schema": "bank100000000052",
       "package_name": "ru.ftc.faktura.nskbl",
-      "icon": "packages/sbp/assets/icons/levoberezhny.pskb"
+      "icon": "packages/sbp/assets/icons/levoberezhny.png"
     },
     {
       "bankName": "Ак Барс Банк",
