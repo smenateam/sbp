@@ -53,7 +53,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('СПБ'),
+          title: const Text('СБП'),
         ),
         body: Center(
           child: Container(
