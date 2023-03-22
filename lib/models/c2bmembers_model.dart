@@ -9,9 +9,8 @@ class C2bmembersModel {
   /// Получение данных из словаря
   C2bmembersModel.fromJson(Map<String, dynamic> json) {
     version = json['version'] ?? '';
-    c2bmembersModel.addAll((json['dictionary'] as List)
-        .map((c2bmemberModel) => C2bmemberModel.fromJson(c2bmemberModel))
-        .toList());
+    c2bmembersModel
+        .addAll((json['dictionary'] as List).map((c2bmemberModel) => C2bmemberModel.fromJson(c2bmemberModel)).toList());
   }
 }
 

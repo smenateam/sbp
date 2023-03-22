@@ -84,10 +84,15 @@ class SbpPlugin : FlutterPlugin, MethodCallHandler {
             "openBank" -> {
                 val packageName = call.argument<String>("package_name")!!
                 val url = call.argument<String>("url")!!
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                intent.setPackage(packageName)
-                context.startActivity(intent)
+                try {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    intent.setPackage(packageName)
+                    context.startActivity(intent)
+                    result.success(true)
+                }catch(exception:java.lang.Exception){
+                    result.error(exception.localizedMessage,exception.message,"asd")
+                }
             }
             else -> {
                 result.notImplemented()
