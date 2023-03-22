@@ -6,3 +6,5 @@ New version compileSdkVersion and targetSdkVersion 33
 Fix changelog
 ## 0.0.6
 Added icons for some banks in order not to download them from the official json qr.nspk (IOS)
+## 0.0.6
+Added new functions, try/catch, and description
