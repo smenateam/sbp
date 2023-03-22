@@ -13,6 +13,20 @@ To use the plugin, add it to the pubspec.yaml file.
 
 ## Installing
 
+### Android
+Starting with android 11 in AndroidManifest.xml, you need to specify applications that our application can see
+```
+ <queries>
+  <array>
+    <package android:name="ru.sberbankmobile" />
+    <package android:name="ru.gazprombank.android.mobilebank.app" />
+    <package android:name="ru.letobank.Prometheus" />
+    ...
+    <package android:name="logo.com.mbanking" />
+    <package android:name="com.openbank" />
+  </queries>
+```
+
 ### IOS
 
 Add URL schemes to `LSApplicationQueriesSchemes` in `Info.plist` file:
@@ -109,3 +123,17 @@ Sbp.openIOSBank(String url, String schema)
 ```
 
 We pass the url of the form https://qr.nspk.ru/.../ and the schema of the application in which you want to open the SBP
+
+### IOS/Android
+
+```
+openBank(String url, String schemaOrPackageName)
+```
+
+We pass the url of the form https://qr.nspk.ru/.../ and the schema or package_name of the application in which you want to open the SBP
+
+```
+List<C2bmembersModel> informations = getInstalledByC2bmemberModelBanks(List<C2bmemberModel> c2bmemberListModel)
+```
+
+We pass c2bmemberListModel and get a list of installed banks(List<C2bmembersModel>)

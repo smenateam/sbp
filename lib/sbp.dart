@@ -77,10 +77,11 @@ class Sbp {
     return c2bmembersInstalled;
   }
 
+  /// Получение списка банков, установленных на устройстве пользователя: Android
+  /// список List<C2bmemberModel> и в ответ получаем List<C2bmemberModel> установленных банков
   static Future<List<C2bmemberModel>> getAndroidInstalledByC2bmembersModelBank(
-    List<C2bmemberModel> c2bmembersData, {
-    bool withApplicationInfo = false,
-  }) async {
+    List<C2bmemberModel> c2bmembersData,
+  ) async {
     /// Парсим список установленных банков с ссылки https://qr.nspk.ru/proxyapp/c2bmembers.json
     final c2bmembersModel = c2bmembersData;
 
@@ -133,7 +134,7 @@ class Sbp {
   }
 
   /// Получение списка банков, установленных на устройстве пользователя: IOS
-  /// передаем список schemes
+  /// список List<C2bmemberModel> и в ответ получаем List<C2bmemberModel> установленных банков
   static Future<List<C2bmemberModel>> getIOSInstalledByC2bmemberModelBanks(
       List<C2bmemberModel> c2bmemberListModel) async {
     final List<C2bmemberModel> schemaApplications = c2bmemberListModel;
@@ -159,16 +160,16 @@ class Sbp {
     return installedSchemeBanks;
   }
 
+  /// Получение списка банков, установленных на устройстве пользователя: IOS/Android
+  /// список List<C2bmemberModel> и в ответ получаем List<C2bmemberModel> установленных банков
   static Future<List<C2bmemberModel>> getInstalledByC2bmemberModelBanks(
-    List<C2bmemberModel> c2bmemberListModel, {
-    bool withApplicationInfo = false,
-  }) async {
+    List<C2bmemberModel> c2bmemberListModel,
+  ) async {
     if (Platform.isIOS) {
       return await getIOSInstalledByC2bmemberModelBanks(c2bmemberListModel);
     }
     return await getAndroidInstalledByC2bmembersModelBank(
       c2bmemberListModel,
-      withApplicationInfo: withApplicationInfo,
     );
   }
 
@@ -178,13 +179,14 @@ class Sbp {
   static Future<bool> openAndroidBank(
     String url,
     String packageName,
-  ) async => await _channel.invokeMethod(
-      'openBank',
-      {
-        'url': url,
-        'package_name': packageName,
-      },
-    );
+  ) async =>
+      await _channel.invokeMethod(
+        'openBank',
+        {
+          'url': url,
+          'package_name': packageName,
+        },
+      );
 
   /// открываем банк: IOS
   /// отдаем ссылку в виде 'https://qr.nspk.ru/...'
@@ -197,6 +199,9 @@ class Sbp {
         },
       );
 
+  /// открываем банк: Android/IOS
+  /// отдаем ссылку в виде 'https://qr.nspk.ru/...'
+  /// schemaOrPackageName: com.example.android или bank10000000000
   static Future<bool> openBank(String url, String schemaOrPackageName) async {
     if (Platform.isIOS) {
       return await openBankIOS(url, schemaOrPackageName);
