@@ -43,36 +43,44 @@ class SbpPlugin : FlutterPlugin, MethodCallHandler {
 
                 val applicationPackageNames =
                     call.argument<List<String>>("application_package_names")!!
+                val useAndroidLocalIcons =
+                    call.argument<Boolean>("use_android_local_icons")!!
+                val useAndroidLocalNames =
+                    call.argument<Boolean>("use_android_local_names")!!
 
-                val installedBanks = mutableListOf<Map<String, Any>>()
+                val installedBanks = mutableListOf<Map<String, Any?>>()
 
                 for (installedApplication in installedApplications) {
                     for (applicationPackageName in applicationPackageNames) {
                         if (installedApplication.packageName == applicationPackageName) {
-                            val icon = installedApplication.loadIcon(pm)
-                            val name = pm.getApplicationLabel(installedApplication)
-
-                            val bitmap: Bitmap = if (icon is BitmapDrawable) {
-                                icon.bitmap
-                            } else {
-                                val bitmap = Bitmap.createBitmap(
-                                    icon.intrinsicWidth,
-                                    icon.intrinsicHeight,
-                                    Bitmap.Config.ARGB_8888
-                                )
-                                val canvas = Canvas(bitmap)
-                                icon.setBounds(0, 0, canvas.width, canvas.height)
-                                icon.draw(canvas)
-                                bitmap
+                            var name:CharSequence? = null;
+                            var byteArray: ByteArray? = null;
+                            if(useAndroidLocalNames){
+                                name = pm.getApplicationLabel(installedApplication)
                             }
-
-                            val stream = ByteArrayOutputStream()
-                            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
-                            val byteArray = stream.toByteArray()
+                            if(useAndroidLocalIcons) {
+                                val icon = installedApplication.loadIcon(pm)
+                                val bitmap: Bitmap = if (icon is BitmapDrawable) {
+                                    icon.bitmap
+                                } else {
+                                    val bitmap = Bitmap.createBitmap(
+                                        icon.intrinsicWidth,
+                                        icon.intrinsicHeight,
+                                        Bitmap.Config.ARGB_8888
+                                    )
+                                    val canvas = Canvas(bitmap)
+                                    icon.setBounds(0, 0, canvas.width, canvas.height)
+                                    icon.draw(canvas)
+                                    bitmap
+                                }
+                                val stream = ByteArrayOutputStream()
+                                bitmap.compress(Bitmap.CompressFormat.PNG,100,stream)
+                                byteArray = stream.toByteArray()
+                            }
                             installedBanks.add(
                                 mapOf(
                                     "package_name" to installedApplication.packageName,
-                                    "name" to name.toString(),
+                                    "name" to name?.toString(),
                                     "bitmap" to byteArray
                                 )
                             )
@@ -90,8 +98,8 @@ class SbpPlugin : FlutterPlugin, MethodCallHandler {
                     intent.setPackage(packageName)
                     context.startActivity(intent)
                     result.success(true)
-                }catch(exception:java.lang.Exception){
-                    result.error(exception.localizedMessage,exception.message,"asd")
+                } catch (exception: java.lang.Exception) {
+                    result.error(exception.localizedMessage, exception.message, "sbp")
                 }
             }
             else -> {

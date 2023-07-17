@@ -1,10 +1,7 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:sbp/data/asset_links_data.dart';
 import 'package:sbp/data/c2bmembers_data.dart';
-import 'package:sbp/models/application_info_model.dart';
 import 'package:sbp/models/c2bmembers_model.dart';
 import 'package:sbp/sbp.dart';
 
@@ -29,19 +26,16 @@ class _MyAppState extends State<MyApp> {
     getInstalledBanks();
   }
 
-  List<dynamic> informations = [];
+  List<C2bmemberModel> informations = [];
 
   /// Получаем установленные банки
   Future<void> getInstalledBanks() async {
     try {
-      if (Platform.isAndroid) {
-        informations =
-            await Sbp.getAndroidInstalledByAssetLinksJsonBanks(assetLinksData);
-      }
-      if (Platform.isIOS) {
-        informations =
-            await Sbp.getIOSInstalledByC2bmembersJsonBanks(c2bmembersData);
-      }
+      informations.addAll(await Sbp.getInstalledBanks(
+        C2bmembersModel.fromJson(c2bmembersData),
+        useAndroidLocalIcons: false,
+        useAndroidLocalNames: false,
+      ));
     } on Exception catch (e) {
       throw Exception(e);
     }
@@ -58,21 +52,18 @@ class _MyAppState extends State<MyApp> {
         body: Center(
           child: Container(
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            decoration: const BoxDecoration(
-                color: Colors.tealAccent,
-                borderRadius: BorderRadius.all(Radius.circular(10))),
+            decoration:
+                const BoxDecoration(color: Colors.tealAccent, borderRadius: BorderRadius.all(Radius.circular(10))),
             child: Builder(builder: (context) {
               return GestureDetector(
                 onTap: () => showModalBottomSheet(
                   context: context,
-                  //isScrollControlled: true,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(20),
                     ),
                   ),
-                  builder: (ctx) =>
-                      SbpModalBottomSheetWidget(informations, widget.url),
+                  builder: (ctx) => SbpModalBottomSheetWidget(informations, widget.url),
                 ),
                 child: const Text('Открыть модальное окно'),
               );
@@ -103,7 +94,7 @@ class SbpHeaderModalSheet extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         Image.asset(
-          'assets/sbp.png',
+          'packages/sbp/assets/sbp.png',
           width: 100,
         ),
         const SizedBox(height: 10),
@@ -148,11 +139,10 @@ class SbpModalBottomSheetEmptyListBankWidget extends StatelessWidget {
 
 /// Модальное окно с банками
 class SbpModalBottomSheetWidget extends StatelessWidget {
-  final List<dynamic> informations;
+  final List<C2bmemberModel> informations;
   final String url;
 
-  const SbpModalBottomSheetWidget(this.informations, this.url, {Key? key})
-      : super(key: key);
+  const SbpModalBottomSheetWidget(this.informations, this.url, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -165,37 +155,7 @@ class SbpModalBottomSheetWidget extends StatelessWidget {
             child: ListView.separated(
               itemCount: informations.length,
               itemBuilder: (ctx, index) {
-                if (Platform.isAndroid) {
-                  final information =
-                      informations[index] as ApplicationInfoModel;
-                  return Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.white70,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(20),
-                      ),
-                    ),
-                    child: GestureDetector(
-                      onTap: () =>
-                          openAndroidBank(url, information.packageName),
-                      child: Row(
-                        children: [
-                          const SizedBox(width: 10),
-                          Image.memory(
-                            information.bitmap!,
-                            width: 80,
-                          ),
-                          const SizedBox(width: 20),
-                          Center(
-                            child: Text(information.name),
-                          ),
-                          const SizedBox(width: 10)
-                        ],
-                      ),
-                    ),
-                  );
-                }
-                final information = informations[index] as C2bmemberModel;
+                final information = informations[index];
                 return Container(
                   decoration: const BoxDecoration(
                     color: Colors.white70,
@@ -204,7 +164,7 @@ class SbpModalBottomSheetWidget extends StatelessWidget {
                     ),
                   ),
                   child: GestureDetector(
-                    onTap: () => openIOSBank(url, information.schema),
+                    onTap: () => openBank(url, information),
                     child: Row(
                       children: [
                         const SizedBox(width: 10),
@@ -213,13 +173,17 @@ class SbpModalBottomSheetWidget extends StatelessWidget {
                           height: 80.0,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(20.0),
-                            child: information.icon.isNotEmpty
-                                ? Image.asset(
-                                    information.icon,
+                            child: information.bitmap != null
+                                ? Image.memory(
+                                    information.bitmap!,
                                   )
-                                : Image.network(
-                                    information.logoURL,
-                                  ),
+                                : information.icon.isNotEmpty
+                                    ? Image.asset(
+                                        information.icon,
+                                      )
+                                    : Image.network(
+                                        information.logoURL,
+                                      ),
                           ),
                         ),
                         const SizedBox(width: 20),
@@ -232,8 +196,7 @@ class SbpModalBottomSheetWidget extends StatelessWidget {
                   ),
                 );
               },
-              separatorBuilder: (BuildContext context, int index) =>
-                  const SizedBox(height: 10),
+              separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 10),
             ),
           ),
           const SizedBox(height: 20),
@@ -244,11 +207,6 @@ class SbpModalBottomSheetWidget extends StatelessWidget {
     }
   }
 
-  /// передается package_name
-  Future<void> openAndroidBank(String url, String packageName) async =>
-      await Sbp.openAndroidBank(url, packageName);
-
   /// передается scheme
-  Future<void> openIOSBank(String url, String scheme) async =>
-      await Sbp.openBankIOS(url, scheme);
+  FutureOr<void> openBank(String url, C2bmemberModel c2bmemberModel) async => await Sbp.openBank(url, c2bmemberModel);
 }

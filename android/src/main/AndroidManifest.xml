@@ -2,12 +2,27 @@
     package="com.example.sbp">
 
     <uses-permission android:name="android.permission.INTERNET" /><!--нужно, чтобы загрузить банки поддерживаемые ссылку nspk.ru-->
+
     <queries>
-        <intent>
-            <data
-                android:host="qr.nspk.ru"
-                android:scheme="https" />
-            <action android:name="android.intent.action.VIEW" />
-        </intent>
+        <package android:name="ru.sberbankmobile" />
+        <package android:name="ru.vtb24.mobilebanking.android" />
+        <package android:name="com.idamob.tinkoff.android" />
+        <package android:name="ru.alfabank.mobile.android" />
+        <package android:name="ru.sovcomcard.halva.v1" />
+        <package android:name="ru.rshb.dbo" />
+        <package android:name="ru.gazprombank.android.mobilebank.app" />
+        <package android:name="ru.letobank.Prometheus" />
+        <package android:name="logo.com.mbanking" />
+        <package android:name="com.openbank" />
+        <package android:name="ru.raiffeisennews" />
+        <package android:name="ru.simpls.brs2.mobbank" />
+        <package android:name="ru.rosbank.android" />
+        <package android:name="com.bifit.rncbbeta" />
+        <package android:name="ru.bankuralsib.mb.android" />
+        <package android:name="ru.mts.money" />
+        <package android:name="ru.otpbank.mobile" />
+        <package android:name="ru.bspb" />
+        <package android:name="cb.ibank" />
+        <package android:name="com.bssys.roscapretail" />
     </queries>
 </manifest>

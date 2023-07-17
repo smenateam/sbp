@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 /// данные, которые приходят с сервера: поддерживаемые банки(СБП) IOS
 class C2bmembersModel {
   /// [version] - версия json
@@ -30,6 +32,12 @@ class C2bmemberModel {
 
   /// [icon] - icon приложения
   late final String icon;
+
+  /// [bitmap] - иконка приложения, если выставить use_android_local_icons = true (Android)
+  Uint8List? bitmap;
+
+  /// [localName] - название приложения, если выставить use_android_local_names = true (Android)
+  String? localName;
 
   /// Получение данных из словаря
   C2bmemberModel.fromJson(Map<String, dynamic> json) {
