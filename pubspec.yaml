@@ -5,7 +5,7 @@ repository: https://github.com/smenateam/sbp/tree/master/lib
 homepage: https://github.com/smenateam/sbp
 
 environment:
-  sdk: ^2.16.1
+  sdk: '>=2.16.1 <4.0.0'
   flutter: ">=2.5.0"
 
 dependencies:

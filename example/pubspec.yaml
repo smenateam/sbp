@@ -2,7 +2,7 @@ name: sbp_example
 description: Demonstrates how to use the sbp plugin.
 
 environment:
-  sdk: ^2.16.1
+  sdk: '>=2.16.1 <4.0.0'
 
 dependencies:
   flutter:
