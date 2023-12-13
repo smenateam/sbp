@@ -1015,6 +1015,145 @@ final c2bmembersData = {
       "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000245.png",
       "schema": "bank100000000245",
       "package_name": "ru.ftc.faktura.lanta"
+    },
+    {
+      "bankName": "Яндекс Банк",
+      "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000150.png",
+      "schema": "bank100000000150",
+      "package_name": "com.yandex.bank"
+    },
+    {
+      "bankName": "Банк БЖФ",
+      "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000260.png",
+      "schema": "bank100000000260",
+      "package_name": "ru.ftc.faktura.bgfbank"
+    },
+    {
+      "bankName": "КБ ЛОКО-Банк",
+      "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000161.png",
+      "schema": "bank100000000161",
+      "package_name": "com.idamobile.android.LockoBank"
+    },
+    {
+      "bankName": "БАНК МОСКВА-СИТИ",
+      "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000234.png",
+      "schema": "bank100000000234",
+      "package_name": "com.bifit.mobile.citizen.MCBank"
+    },
+    {
+      "bankName": "Драйв Клик Банк",
+      "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000250.png",
+      "schema": "bank100000000250",
+      "package_name": "com.cetelem.cetelem_android"
+    },
+    {
+      "bankName": "ГУТА-БАНК",
+      "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000149.png",
+      "schema": "bank100000000149",
+      "package_name": "com.bssys.gutaretail"
+    },
+    {
+      "bankName": "ФИНСТАР БАНК",
+      "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000278.png",
+      "schema": "bank100000000278",
+      "package_name": "ru.ftc.faktura.siab"
+    },
+    {
+      "bankName": "банк Раунд",
+      "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000247.png",
+      "schema": "bank100000000247",
+      "package_name": "com.isimplelab.ionic.round.prod"
+    },
+    {
+      "bankName": "Прио-Внешторгбанк",
+      "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000228.png",
+      "schema": "bank100000000228",
+      "package_name": "com.priobank.prio"
+    },
+    {
+      "bankName": "Инбанк",
+      "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000196.png",
+      "schema": "bank100000000196",
+      "package_name": "com.inbank.mobilebank"
+    },
+    {
+      "bankName": "Уралфинанс",
+      "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000096.png",
+      "schema": "bank100000000096",
+      "package_name": "com.isimplelab.isimplemobile.payjet"
+    },
+    {
+      "bankName": "Банк Агророс",
+      "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000102.png",
+      "schema": "bank100000000102",
+      "package_name": "ru.ftc.faktura.agroros"
+    },
+    {
+      "bankName": "ЮГ-Инвестбанк",
+      "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000160.png",
+      "schema": "bank100000000160",
+      "package_name": "com.bifit.mobile.citizen.invb"
+    },
+    {
+      "bankName": "ЦентроКредит",
+      "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000231.png",
+      "schema": "bank100000000231",
+      "package_name": "com.compassplus.mobicash.customer"
+    },
+    {
+      "bankName": "Снежинский",
+      "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000163.png",
+      "schema": "bank100000000163",
+      "package_name": "com.compassplus.mobicash.customer"
+    },
+    {
+      "bankName": "Банк ФИНАМ",
+      "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000040.png",
+      "schema": "bank100000000040",
+      "package_name": "ru.finambank.app"
+    },
+    {
+      "bankName": "Банк Точка",
+      "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000284.png",
+      "schema": "bank100000000284",
+      "package_name": ""
+    },
+    {
+      "bankName": "банк Элита",
+      "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000266.png",
+      "schema": "bank100000000266",
+      "package_name": ""
+    },
+    {
+      "bankName": "Металлинвестбанк",
+      "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000046.png",
+      "schema": "bank100000000046",
+      "package_name": ""
+    },
+    {
+      "bankName": "ПроБанк",
+      "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000117.png",
+      "schema": "bank100000000117",
+      "webClientUrl": "https://bk.probank.pro/a567/",
+      "isWebClientActive": "true"
+    },
+    {
+      "bankName": "ФФИН Банк",
+      "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000265.png",
+      "schema": "bank100000000265",
+      "package_name": ""
+    },
+    {
+      "bankName": "Озон Банк (Ozon)",
+      "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000273.png",
+      "schema": "bank100000000273",
+      "package_name": ""
+    },
+    {
+      "bankName": "Первый Дортрансбанк",
+      "logoURL": "https://qr.nspk.ru/proxyapp/logo/bank100000000137.png",
+      "schema": "bank100000000137",
+      "package_name": ""
     }
   ]
 };
