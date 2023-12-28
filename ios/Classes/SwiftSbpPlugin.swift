@@ -26,10 +26,11 @@ public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
   }
   public func getInstalledBanks(_ schemaApplications: [String], result: @escaping FlutterResult) {
       var schemas: [String] = []
-      for schemaApplication in schemaApplications{
-          let schema = URL(string: "\(schemaApplication)://")!
-          if UIApplication.shared.canOpenURL(schema) {
-              schemas.append(schemaApplication)
+      for schemaApplication in schemaApplications {
+          if let schema = URL(string: "\(schemaApplication)://") {
+              if UIApplication.shared.canOpenURL(schema) {
+                  schemas.append(schemaApplication)
+              }
           }
       }
       result(schemas)
